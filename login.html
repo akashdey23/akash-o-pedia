@@ -9,11 +9,39 @@
         .formDiv
         {
             height: 400px;
-            width: 80%;
-            border: 1px solid black;
+            width: 100%;
+            /* border: 1px solid black; */
             display: flex;
             align-items: center;
             justify-content: center;
+            max-width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        body {
+          text-align: center;
+          background: -webkit-linear-gradient(to top right, #4d48c0, #56BF6D);
+          /* Safari */
+          background: -o-linear-gradient(to top right, #4d48c0, #56BF6D);
+          /* Opera */
+          background: -moz-linear-gradient(to top right, #4d48c0, #56BF6D);
+          /* Mozilla */
+          background: linear-gradient(to top right, #4d48c0, #56BF6D);
+          /* Standard */
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+        }
+        .header1
+        {
+          font-size: 75px;
+          font-weight: bold;
+          font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        .header2
+        {
+          font-size: 18px;
+          font-weight: bold;
+          font-family: 'Times New Roman', Times, serif;
         }
     </style>
 </head>
@@ -38,23 +66,23 @@
       </nav>
       <!-- navbar ends -->
 
-    <h1>Login</h1>
+    <h1 class="header1">Login</h1>
 
     <!-- login starts -->
     <div class="formDiv">
         <form>
             <div class="form-group">
-              <label for="exampleInputEmail1">UserName or SIC</label>
+              <!-- <label for="exampleInputEmail1" class="header2">UserName or SIC</label> -->
               <input type="text" class="form-control" id="userName" aria-describedby="emailHelp" placeholder="Enter UserName">
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              <small id="emailHelp" class="header2">We'll never share your identity with anyone else.</small><br><br>
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
+              <!-- <label for="exampleInputPassword1" class="header2">Password</label> -->
               <input type="password" class="form-control" id="pass" placeholder="Password">
             </div>
             <div class="form-group form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+              <label class="header2" for="exampleCheck1">Check me out</label>
             </div>
             <button type="submit" class="btn btn-primary" onclick="login()">Login</button>
           </form>
