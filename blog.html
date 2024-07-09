@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Page</title>
+    <link rel="stylesheet" href="home.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <style>
+        #input1{
+            margin-top:2.5%;
+            display:flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap:2.5%;
+            height:50px;
+        }
+        #inp1,#inp2{
+            height:100%;
+            width:35%;
+            background-color: #0ef;
+            border-radius: 13px;
+            padding-left: 25px;
+            font-size: 18px;
+        }
+        #sub{
+            width:10%;
+            background-color: #0ef;
+            border-radius: 15px;
+            font-size: 20px;
+        }
+        #sub:hover{
+            width:10%;
+            background-color: #5ef;
+            border-radius: 15px;
+            font-size: 21px;
+            font-weight: bold;
+        }
+        .blog{
+            height:200px;
+            margin:2.5%;
+        }
+        .content{
+            border:2px solid rgb(132, 62, 207);
+            display:flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            height:100%;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        #para1{
+            border:2px solid rgb(32, 116, 184);
+            width:73%;
+            height:97%;
+            margin-top:0;
+            font-size: 20px;
+        }
+        #img1{
+            border:2px solid rgb(93, 207, 207);
+            width:25%;
+            height:97%
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="homePage.html">Home</a>
+              <a class="nav-link" href="addProd.html">Add Product</a>
+              <a class="nav-link" href="login.html">Login</a>
+              <a class="nav-link" href="signUp.html">SignUp</a>
+              <a class="nav-link" href="blog.html">Post a Blog</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+</body>
+</html>
+<script>
+//FULL BODY DIV
+let div1=document.createElement("div");
+div1.setAttribute("class","div1");
+let name=document.createElement("text");
+name.innerText="Blog Page";
+name.setAttribute("id","name");
+
+// Create a div element and assign it a class "div1".
+// Create a text element, set its inner text to "Blog Page", and give it an ID of "name".
+
+let buttons=document.createElement("div");
+buttons.setAttribute("id","buttons");
+
+
+//TEXTBAR AND BUTTONS
+let input1=document.createElement("div");
+let inptext=document.createElement("input");
+let inpimg=document.createElement("input");
+let sub=document.createElement("button");
+input1.setAttribute("id","input1");
+sub.setAttribute("id","sub");
+inptext.setAttribute("id","inp1");
+inptext.setAttribute("placeholder","Enter the text here");
+inpimg.setAttribute("id","inp2");
+inpimg.setAttribute("placeholder","Enter the image url");
+sub.innerText="Submit";
+input1.append(inptext,inpimg,sub);
+
+// Create a div element to hold the input fields and button, and assign it an ID of "input1".
+// Create two input elements and a button element.
+// Set IDs for the input elements ("inp1" and "inp2") and the button ("sub").
+// Set placeholders for the input elements ("Enter the text here" and "Enter the image url").
+// Set the button's inner text to "Submit".
+// Append the input elements and the button to the "input1" div.
+
+let body=document.querySelector("body");
+body.append(div1,input1);
+let blog=document.createElement("div");
+blog.setAttribute("class","blog");
+body.append(blog);
+
+// Select the body element of the document.
+// Append the "div1" and "input1" divs to the body.
+// Create a div element to hold blog content and assign it a class of "blog".
+// Append the "blog" div to the body.
+
+sub.addEventListener("click",push);
+
+// Add an event listener to the "Submit" button to call the "push" function when clicked.
+
+let i=0;
+function push(){
+    let content=document.createElement("div");
+    content.setAttribute("class","content");
+    let para1=document.createElement("p");
+    para1.innerText=document.getElementById("inp1").value;
+    para1.setAttribute("id","para1");
+    let img1=document.createElement("img");
+    img1.src=document.getElementById("inp2").value;
+    img1.setAttribute("id","img1");
+
+    // Initialize a counter "i" to 0.
+    // Define the "push" function.
+    // Inside the "push" function, create a div element to hold new content and assign it a class of "content".
+    // Create a paragraph element, set its inner text to the value from the "inp1" input field, and assign it an ID of "para1".
+    // Create an image element, set its source to the value from the "inp2" input field, and assign it an ID of "img1".
+
+    if(i%2==0){
+        content.append(para1,img1);
+    }
+    else{
+        content.append(img1,para1);
+    }
+
+    // If the counter "i" is even, append the paragraph followed by the image to the "content" div.
+    // If "i" is odd, append the image followed by the paragraph to the "content" div.
+
+    blog.append(content);
+
+    // Append the "content" div to the "blog" div.
+
+    inptext.value="";
+    inpimg.value="";
+    inptext.setAttribute("placeholder","Enter the text here");
+    inpimg.setAttribute("placeholder","Enter the image url");
+
+    // Clear the values of the input fields and reset their placeholders.
+
+    i++;
+}
+
+// Increment the counter "i" by 1.
+</script>
