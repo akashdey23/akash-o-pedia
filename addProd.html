@@ -85,23 +85,27 @@
       </nav>
       <!-- navbar ends -->
     <h1 class="header1">Add Product</h1>
+    <br><br>
     <div class="input3">
         <input type="text" placeholder="Name of Product" id="prodName">
         <input type="text" placeholder="Image of Product" id="imgAdd">
         <input type="text" placeholder=" price of Product" id="priceAdd">
         <button onclick="addProductFun()" class="signup2">Add Product</button>
+
+        
     </div>
+    
 </body>
 </html>
 
 <script>
-    let prodData = JSON.parse(localStorage.getItem("prodArr")) || []
-    console.log(prodData);
+    let data = JSON.parse(localStorage.getItem("prodArr")) || [];
+    console.log(data);
     // let x = localStorage.getItem("prodArr");
     // if(x === null){
-    //     prodData = [];
+    //     data = [];
     // } else {
-    //     prodData = JSON.parse(x)
+    //     data = JSON.parse(x)
     // }
         let flag = false;
     let prodName = document.querySelector("#prodName")
@@ -118,8 +122,8 @@
         //5 === "5"
         // [{a,1234},{aa 1234},]
         // false - true
-        for(let i=0; i<prodData.length; i++){ 
-            if(prodData[i].prodName === obj.prodName ){ 
+        for(let i=0; i<data.length; i++){ 
+            if(data[i].prodName === obj.prodName ){ 
                 flag = true;
                 alert("user already exist")
             } else {
@@ -131,11 +135,14 @@
                 return;
             }
         if(flag === false){
-            prodData.push(obj)
-            localStorage.setItem("prodArr",JSON.stringify(prodData))
+            data.push(obj);
+            localStorage.setItem("prodArr", JSON.stringify(data));
+            alert("Product added successfully!");
+            prodName.value = "";
+            imgAdd.value = "";
+            priceAdd.value = "";
         }
-        
-        console.log(prodData);
+        console.log(data);
 
     }
 </script>

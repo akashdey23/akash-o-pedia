@@ -20,17 +20,15 @@
           background-repeat: no-repeat;
           background-attachment: fixed;
         }
-        .header1
-        {
+        .header1 {
           font-size: 75px;
           font-weight: bold;
           font-family: Georgia, 'Times New Roman', Times, serif;
         }
-        .header2
-        {
+        .header2 {
           font-size: 35px;
           font-weight: bold;
-          font-family: Times New 'Times New Roman', Times, serif;
+          font-family: 'Times New Roman', Times, serif;
         }
         #product-list {
             display: flex;
@@ -72,15 +70,36 @@
       <!-- navbar ends -->
     <h1 class="header1">Home</h1>
     <h2 class="header2">Our Products</h2>
-      <br><br><br>
     <div id="product-list">
-        <!-- Products will be displayed here -->
-    </div>
 
-    
+    </div>
 </body>
 </html>
 <script>
+  let data = JSON.parse(localStorage.getItem("prodArr")) || [];
+  
+  function display() {
+    let productList = document.getElementById("product-list");
+    productList.innerHTML = "";
+    for (let i = 0; i < data.length; i++) {
+      let prodDiv = document.createElement("div");
+      prodDiv.className = 'product-item';
+      let productName = document.createElement("h3");
+      productName.textContent = data[i].prodName;
+      let productImage = document.createElement("img");
+      productImage.src = data[i].imgAdd;
+      let productPrice = document.createElement("p");
+      productPrice.textContent = `Price: Rs ${data[i].priceAdd}`;
+
+      prodDiv.append(productName, productImage, productPrice);
+      productList.append(prodDiv);
+    }
+  }
+
+  window.onload = display;
+</script>
+
+<!-- <script>
     let prodData = JSON.parse(localStorage.getItem("prodArr")) || [];
 
     function displayProducts() {
@@ -109,4 +128,4 @@
     }
 
     window.onload = displayProducts;
-</script>
+</script> -->
